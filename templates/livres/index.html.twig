@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LivresController!{% endblock %}
+
+{% block body %}
+<a href="{{ path('livres_create') }}">ajouter</a>
+<table class="table">
+  <thead>
+   <tr>
+<th scope="col">ISBN</th><th scope="col">Titre Livre</th><th scope="col">Theme</th><th scope="col">Nombre de Page</th>
+<th scope="col">Format livre</th><th scope="col">Nom Auteur</th>
+<th scope="col">Prenom Auteur</th><th scope="col">Editeur</th><th scope="col">Annee Edition</th>
+<th scope="col">Prix Vente</th><th scope="col">Langue livre</th><th scope="col">Modif</th><th scope="col">Supp</th>
+  </tr>
+  </thead>
+ {% for livre in livres %}
+<tr>
+<td>{{livre.ISBN}}</td>
+<td>{{livre.TitreLivre}}</td>
+<td>{{livre.ThemeLivre}}</td>
+<td>{{livre.NbrPagesLivre}}</td>
+<td>{{livre.FormatLivre}}</td>
+<td>{{livre.NomAuteur}}</td>
+<td>{{livre.PrenomAuteur}}</td>
+<td>{{livre.Editeur}}</td>
+<td>{{livre.AnneeEdition}}</td>
+<td>{{livre.PrixVente}}</td>
+<td>{{livre.LangueLivre}}</td>
+<td><a href="{{ path('livres_edit', {'id': livre.Id}) }}"> <i class="bi bi-file"></i></a></td>
+
+<td><a href="{{ path('livres_delete', {'id': livre.Id}) }}"><i class="bi bi-trash"></i></td>
+</tr>
+{% endfor %}
+
+</table>
+{% endblock %}
